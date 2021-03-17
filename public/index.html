@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+    <title>My Imageboard</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Pulse-of-the-day</h1>
+
+    <!-- This container is for our Vue instance! -->
+    <!-- It will have access to our Vue code. -->
+    
+    <div id='main'>
+
+        <form style="border: 2px solid black;" > 
+            <input v-model="title" type="text" name="title" placeholder="Image title">
+            <input v-model="description" type="text" name="description" placeholder=" Topic description">
+            <input v-model="username"  type="text" name="username" placeholder="Username">
+            <input  @change="fileSelectHandler" type="file" name="file" accept="image\*">   <!-- My file will be uploaded through here -->
+            <button class="button" @click.prevent="clickHandler">Submit</button>
+        </form>
+
+         <div class="container">
+            <div v-for ="each in images">
+                    <a :href="'#'+each.id"><img :src="each.url" ></a>
+                    <p id="title" @click='selectedImage = each.id'>{{each.title}}</p>  
+            </div>
+        <div class="morebutton">
+            <button class="button" @click="morePictures" v-if="morebutton">Load more topics</button>
+        </div>
+
+        </div>
+
+        <!--  This part works thursday
+
+        <div class="container">
+            <div v-for ="each in images">
+                    <img :src="each.url" @click="selectedImage = each.id">
+                    <p id="title" @click='selectedImage = each.id'>{{each.title}}</p>  
+            </div>
+        </div>
+
+        -->
+
+        <modal 
+            v-if="selectedImage" 
+            :imageid="selectedImage" 
+            @close="closeModal"
+        ></modal>
+
+    </div>
+
+    <script type="text/x-template" id="modal">
+        
+        <div class="overlay">
+            
+            <div class="mainbox"> 
+
+                    <div>
+                    <p @click="closeModal">x</p>
+                    <header><h1>{{ title }}</h1></header>   
+                    <h2> {{ description }} </h2>
+                    <h2>Uploaded by user: {{ username }}</h2>
+                    </div>
+
+                    <div class="commentsdiv">
+                     <h2>Leave your comment here:</h2>
+                     <comment :imageid="imageid" ></comment>
+                    </div>
+            </div>
+
+            <div>
+            <img class="modalpic" :src="url" alt="">
+             </div>
+
+        </div>
+
+    </script> 
+
+    <script type="text/x-template" id="comment">
+
+         <div class="commentinput">
+                <input v-model="username" type="text" name="username" placeholder="Your username">
+                <input v-model="comment" type="text" name="comment" placeholder="Enter comment here">
+                <button @click.prevent="commentHandler">Submit</button> 
+
+                <section class="comments" v-for="each in comments"> 
+                <p>{{each.comment}}</p>
+                <p>Made by {{each.username}} on the {{each.created_at}}</p>
+                </section>
+        </div>
+
+    </script>
+
+    <script src="/js/vue.js"></script>
+    <script src="/js/axios.min.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+</html>

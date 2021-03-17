@@ -1,0 +1,99 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 80px;
+    margin: 0 -5px;
+}
+
+
+.modalpic {
+    height: 250px;
+    width: 250px;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+input {
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 13px;
+  background-color: white;
+}
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 5px 32px;
+  text-decoration: none;
+  margin: 1px 1px;
+  cursor: pointer;
+}
+
+
+form {
+    padding: 10px;
+    align-items: center;
+}
+
+img {
+    height: 300px;
+    width: 300px;
+    border: solid black;
+    border-radius: 10px;
+    margin: 0 10px;
+
+}
+
+body {
+    line-height: 1;
+}
+
+h1 {
+    font-family: Georgia, sans-serif;
+    font-size: 4em;
+    letter-spacing: -2px;
+    text-align:center;
+    background-color: black;
+    color: white;
+}
+
+.overlay {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+    position: fixed; 
+    height: fixed; 
+    height: 80vh;
+    width: 80vw;
+    top: 5%;
+    background-color: rgb(211, 211, 236);
+    padding: 20px 20px 20px 20px;
+    border-radius: 10px;
+}
+
+.comments {
+    width: 60%;
+    border: solid black;
+}
+
+.commentsdiv {
+    width: 700px;
+}
+
+.right {
+    position:absolute;
+    margin-right: 1px;
+}
+
+.mainbox {
+    width: 57vw;
+}
+    
+   
+
+
